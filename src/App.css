@@ -1,0 +1,23 @@
+.resultsContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+.resultsContainer {
+  border: solid 1px black;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.searchContainer {
+  border: solid 1px black;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.title {
+  padding: 10px 0 0 10px;
+}
