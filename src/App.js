@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results";
 import Nominations from "./Nominations";
+import apiKey from "./apiKey";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,7 +10,6 @@ const App = () => {
 
   const searchMovies = (e) => {
     e.preventDefault();
-    const apiKey = 11613196;
     axios
       .get(`http://www.omdbapi.com/?apikey=${apiKey}&`, {
         params: {
