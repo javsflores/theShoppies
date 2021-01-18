@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Results from "./Results";
+import Nominations from "./Nominations";
 
-function App() {
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [movieList, setMovieList] = useState([]);
+
+  const searchMovies = (e) => {
+    e.preventDefault();
+    const apiKey = 11613196;
+    axios
+      .get(`http://www.omdbapi.com/?apikey=${apiKey}&`, {
+        params: {
+          s: searchTerm,
+        },
+      })
+      .then(({ data }) => {
+        setMovieList(data.Search);
+      });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>The Shoppies</h1>
+      <h3>Movie Title</h3>
+      <form onSubmit={(e) => searchMovies(e)}>
+        <label>🔍 </label>
+        <input
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        ></input>
+      </form>
+      <br />
+      <Results movieList={movieList} searchTerm={searchTerm} />
+      <Nominations />
     </div>
   );
-}
+};
 
 export default App;
