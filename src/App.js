@@ -12,7 +12,7 @@ const App = () => {
   const searchMovies = (e) => {
     e.preventDefault();
     axios
-      .get(`http://www.omdbapi.com/?apikey=${11613196}&`, {
+      .get(`https://www.omdbapi.com/?apikey=${11613196}&`, {
         params: {
           s: searchTerm,
           type: "movie",
